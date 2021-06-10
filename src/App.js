@@ -1,23 +1,26 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
+import { Switch, Route } from "react-router";
+import Header from "./Components/Header";
+import PostContainer from "./Components/PostContainer";
+import User from "./Components/User";
+import PostCard from "./Components/PostCard";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          MIKE <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Switch>
+        <Route exact path="/login">
+          <User />
+        </Route>
+        <Route exact path="/posts">
+          <PostContainer />
+        </Route>
+        <Route exact path="/postinfo">
+          <PostCard />
+        </Route>
+      </Switch>
     </div>
   );
 }
