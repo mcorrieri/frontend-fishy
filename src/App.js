@@ -2,9 +2,12 @@
 import "./App.css";
 import { Switch, Route } from "react-router";
 import Header from "./Components/Header";
-import PostContainer from "./Components/PostContainer";
-import User from "./Components/User";
+import PostPage from "./Components/PostPage";
+import Login from "./Components/Login";
 import PostCard from "./Components/PostCard";
+import Signup from "./Components/Signup";
+import UserInfo from "./Components/UserInfo";
+import PostForm from "./Components/PostForm";
 
 function App() {
   return (
@@ -12,13 +15,22 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/login">
-          <User />
+          <Login />
         </Route>
-        <Route exact path="/posts">
-          <PostContainer />
+        <Route exact path="/signup">
+          <Signup />
         </Route>
         <Route exact path="/postinfo">
           <PostCard />
+        </Route>
+        <Route exact path="/posts">
+          <PostPage />
+        </Route>
+        <Route exact path="/userinfo">
+          <UserInfo />
+        </Route>
+        <Route exact path="/postform">
+          <PostForm />
         </Route>
       </Switch>
     </div>

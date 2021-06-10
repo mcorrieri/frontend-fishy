@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-function User() {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
@@ -22,14 +22,19 @@ function User() {
       }),
     })
       .then((res) => res.json())
-      .then((message) => {
-        if (message.error) {
-          setErrors(message.error);
+      .then((userInfo) => {
+        console.log(userInfo);
+        if (userInfo.message) {
+          alert(userInfo.message);
         } else {
-          localStorage.token = message.token;
+          localStorage.token = userInfo.token;
           history.push("/posts");
         }
       });
+  }
+
+  function handleNewAccount() {
+    history.push("/signup");
   }
 
   return (
@@ -52,8 +57,10 @@ function User() {
         />
         <button type="submit">Submit</button>
       </form>
+      <br></br>
+      <button onClick={handleNewAccount}>Create fishy account</button>
     </div>
   );
 }
 
-export default User;
+export default Login;

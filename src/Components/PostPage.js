@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Card } from "semantic-ui-react";
+import PostCard from "./PostCard";
 
-function PostContainer() {
-  const [user, setUser] = useState("");
+function PostPage() {
+  // const [user, setUser] = useState("");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -20,24 +20,16 @@ function PostContainer() {
       });
   }, []);
 
-  const postList = posts.map((post) => {
-    return (
-      <Card
-        key={post.id}
-        date={post.date}
-        description={post.description}
-        image={post.image}
-        watertype={post.watertype}
-        location={post.location}
-      />
-    );
+  let postCards = posts.map((post) => {
+    return <PostCard key={post.id} post={post} />;
   });
 
   return (
     <div>
-      <Card.Group>{postList}</Card.Group>
+      <h1>Post Page</h1>
+      <ul>{postCards}</ul>
     </div>
   );
 }
 
-export default PostContainer;
+export default PostPage;
