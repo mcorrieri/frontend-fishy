@@ -1,9 +1,10 @@
 // import { useState, useEffect } from "react";
-import { Modal, Image } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Modal, Image, Card } from "semantic-ui-react";
 
-function PostCard({ post }) {
-  const { date, description, image, watertype, location } = post;
+function PostCard({ post, id }) {
   console.log(post);
+  const { date, description, image, water_type, location } = post;
   // const [post, setPost] = useState(null);
 
   // useEffect(() => {
@@ -23,19 +24,19 @@ function PostCard({ post }) {
   return (
     // <Modal>
     //   <Modal.Content image>
-    <div>
+    <Card as={Link} to={`/postinfo/${id}`}>
       <Image wrapped size="medium" src={image} alt="Post" />
       {/* <Modal.Description> */}
       <div>
         <p>Date: {date} </p>
         <p>Description: {description}</p>
-        <p>Water Type: {watertype}</p>
+        <p>Water Type: {water_type}</p>
         <p>Location: {location}</p>
       </div>
       {/* </Modal.Description>
     //   </Modal.Content> */}
       {/* // </Modal> */}
-    </div>
+    </Card>
   );
 }
 

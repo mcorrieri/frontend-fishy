@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 function PostForm() {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [watertype, setWatertype] = useState("");
+  const [water_type, setWatertype] = useState("");
   const [location, setLocation] = useState("");
 
   const history = useHistory();
@@ -20,17 +20,15 @@ function PostForm() {
         date: date,
         description: description,
         image: image,
-        watertype: watertype,
+        water_type: water_type,
         location: location,
       }),
     })
       .then((res) => res.json())
-      .then((response) => {
-        console.log(response);
+      .then((newPost) => {
+        console.log("hey");
 
-        if (!response.message) {
-          history.push("/posts");
-        }
+        history.push("/posts");
       });
   }
   return (
@@ -57,7 +55,7 @@ function PostForm() {
         <label>Water type: </label>
         <input
           type="text"
-          value={watertype}
+          value={water_type}
           onChange={(e) => setWatertype(e.target.value)}
         />
         <label>Location: </label>

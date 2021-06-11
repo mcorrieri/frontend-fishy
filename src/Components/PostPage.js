@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PostCard from "./PostCard";
 
 function PostPage() {
@@ -21,12 +22,13 @@ function PostPage() {
   }, []);
 
   let postCards = posts.map((post) => {
-    return <PostCard key={post.id} post={post} />;
+    return <PostCard key={post.id} post={post} id={post.id} />;
   });
 
   return (
     <div>
       <h1>Post Page</h1>
+      <Link to="/postform">Add New Post</Link>
       <ul>{postCards}</ul>
     </div>
   );

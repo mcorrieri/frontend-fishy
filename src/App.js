@@ -8,6 +8,7 @@ import PostCard from "./Components/PostCard";
 import Signup from "./Components/Signup";
 import UserInfo from "./Components/UserInfo";
 import PostForm from "./Components/PostForm";
+import PostInfo from "./Components/PostInfo";
 
 function App() {
   return (
@@ -20,11 +21,11 @@ function App() {
         <Route exact path="/signup">
           <Signup />
         </Route>
-        <Route exact path="/postinfo">
-          <PostCard />
-        </Route>
         <Route exact path="/posts">
           <PostPage />
+        </Route>
+        <Route exact path="/postinfo/:id">
+          <PostInfo />
         </Route>
         <Route exact path="/userinfo">
           <UserInfo />
