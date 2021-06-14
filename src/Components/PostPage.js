@@ -16,7 +16,7 @@ function PostPage() {
     })
       .then((res) => res.json())
       .then(function (posts) {
-        console.log(posts);
+        // console.log(posts);
         setPosts(posts);
       });
   }, []);

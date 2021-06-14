@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { Image } from "semantic-ui-react";
 
 function PostInfo(props) {
   console.log(props);
   const [post, setPost] = useState([]);
   const params = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     fetch(`http://localhost:3000/posts/${params.id}`, {
@@ -20,7 +21,34 @@ function PostInfo(props) {
         console.log(post);
         setPost(post);
       });
-  }, []);
+  }, [params.id]);
+
+  function deletePost() {
+    fetch(`http://localhost:3000/posts/${params.id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((resp) => {
+        history.push("/posts");
+      });
+  }
+
+  //   function handleUpdatePost() {
+  //     fetch(`http://localhost:3000/posts/${params.id}`, {
+  //       method: "PATCH",
+  //       headers: {
+  //         "Content-type": "application/json",
+  //         // "Authorization": loggedInUser.token
+  //       },
+  //       body: JSON.stringify({
+
+  //       })
+  //     })
+  //       .then((res) => res.json())
+  //       .then((resp) => {
+  //         history.push("/posts");
+  //       });
+  //   }
 
   return (
     <div>
@@ -31,6 +59,10 @@ function PostInfo(props) {
       <p>Location: {post.location}</p>
       <p>Date: {post.date} </p>
       <p>Care level: </p>
+      <div>
+        <button onClick={deletePost}>Delete post</button>
+        <button>Edit post</button>
+      </div>
     </div>
   );
 }

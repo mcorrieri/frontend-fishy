@@ -10,7 +10,8 @@ function PostForm() {
 
   const history = useHistory();
 
-  function handleAddPost() {
+  function handleAddPost(e) {
+    e.preventDefault();
     fetch("http://localhost:3000/posts", {
       method: "POST",
       headers: {
@@ -24,7 +25,10 @@ function PostForm() {
         location: location,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
       .then((newPost) => {
         console.log("hey");
 

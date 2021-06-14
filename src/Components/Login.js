@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-function Login() {
+function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
@@ -28,6 +28,7 @@ function Login() {
           alert(userInfo.message);
         } else {
           localStorage.token = userInfo.token;
+          onLogin(userInfo);
           history.push("/posts");
         }
       });
