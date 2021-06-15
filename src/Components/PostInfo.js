@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router";
 import { Image, Button, Card } from "semantic-ui-react";
 
-function PostInfo(props, { loggedInUser }) {
-  console.log(props);
+function PostInfo({ loggedInUser }) {
   const [post, setPost] = useState([]);
-  const [aquarium, setAquarium] = useState([]);
+  // const [aquarium, setAquarium] = useState([]);
   const params = useParams();
   const history = useHistory();
 
@@ -19,7 +18,6 @@ function PostInfo(props, { loggedInUser }) {
     })
       .then((res) => res.json())
       .then(function (post) {
-        console.log(post);
         setPost(post);
       });
   }, [params.id]);
@@ -34,10 +32,10 @@ function PostInfo(props, { loggedInUser }) {
       });
   }
 
-  function addToAquarium() {
-    setAquarium([...aquarium, post.id]);
-  }
-
+  // function addToAquarium() {
+  //   setAquarium([...aquarium, post.id]);
+  // }
+  console.log(loggedInUser);
   return (
     <div>
       <Card className="ui centered card">
@@ -50,10 +48,14 @@ function PostInfo(props, { loggedInUser }) {
         </Card.Content>
       </Card>
       <div>
-        <Button onClick={deletePost}>Delete post</Button>
-        <Button>Edit post</Button>
+        <div>
+          {loggedInUser.id === post.user_id ? (
+            <Button onClick={deletePost}>Delete post</Button>
+          ) : null}
+          {loggedInUser.id === post.user_id ? <Button>Edit post</Button> : null}
+        </div>
         <br></br>
-        <Button onClick={addToAquarium}>I want this fish</Button>
+        <Button>I want this fish</Button>
       </div>
     </div>
   );

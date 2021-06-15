@@ -1,15 +1,15 @@
-import { Link } from "react-router-dom";
-import { Card } from "semantic-ui-react";
+import { Card, Image } from "semantic-ui-react";
 
 function FishCard({ fish, id }) {
-  const { name, care_level } = fish;
-
   return (
-    <Card as={Link} to={`/fish/${id}`}>
-      <div>
-        <p>Name: {name} </p>
-        <p>Care Level: {care_level}</p>
-      </div>
+    <Card centered>
+      <Image wrapped size="medium" src={fish.image} alt="fish-image" />
+      <Card.Content>
+        <p>Breed: {fish.breed}</p>
+        <p>Water type: {fish.watertype}</p>
+        <p>Recommended tank size: {fish.tanksize} gallon</p>
+        <p>Care level: {fish.carelevel}/10</p>
+      </Card.Content>
     </Card>
   );
 }
