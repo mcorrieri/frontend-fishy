@@ -5,7 +5,6 @@ import { Switch, Route } from "react-router";
 import PostPage from "./Components/PostPage";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import UserInfo from "./Components/UserInfo";
 import PostForm from "./Components/PostForm";
 import PostInfo from "./Components/PostInfo";
 import MyAquarium from "./Components/MyAquarium";
@@ -14,11 +13,15 @@ import MyPosts from "./Components/MyPosts";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUserFish, setLoggedInUserFish] = useState([]);
+  const [loggedInUserPosts, setLoggedInUserPosts] = useState([]);
 
   function onLogin(userInfo) {
     setLoggedInUser(userInfo);
+    setLoggedInUserPosts(userInfo.posts);
+    console.log(userInfo.posts);
   }
-  console.log(loggedInUser);
+  // console.log(loggedInUser);
   useEffect(() => {
     if (localStorage.token) {
       fetch("http://localhost:3000/keep_logged_in", {
@@ -30,9 +33,12 @@ function App() {
         .then((res) => res.json())
         .then((data) => {
           setLoggedInUser(data);
+          setLoggedInUserPosts(data.posts);
         });
     }
   }, []);
+
+  console.log(loggedInUser);
 
   return (
     <div className="App">
@@ -50,17 +56,23 @@ function App() {
         <Route exact path="/post/:id">
           <PostInfo loggedInUser={loggedInUser} />
         </Route>
-        <Route exact path="/userinfo">
-          <UserInfo />
-        </Route>
         <Route exact path="/postform">
-          <PostForm />
+          <PostForm
+            loggedInUser={loggedInUser}
+            loggedInUserFish={loggedInUserFish}
+            setLoggedInUserFish={setLoggedInUserFish}
+            loggedInUserPosts={loggedInUserPosts}
+            setLoggedInUserPosts={setLoggedInUserPosts}
+          />
         </Route>
         <Route exact path="/myfish">
           <MyAquarium loggedInUser={loggedInUser} />
         </Route>
         <Route exact path="/myposts">
-          <MyPosts loggedInUser={loggedInUser} />
+          <MyPosts
+            loggedInUser={loggedInUser}
+            loggedInUserPosts={loggedInUserPosts}
+          />
         </Route>
       </Switch>
     </div>

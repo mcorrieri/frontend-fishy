@@ -14,13 +14,12 @@ function Title({ loggedInUser, setLoggedInUser }) {
   return (
     <div className="header">
       <Segment>
-        <Header as="h2">
-          <Link to="/posts">FISHY</Link>
+        <Header as="h2" textAlign="left">
           <Image
             circular
-            size="small"
             src="https://image.posterlounge.com/img/products/660000/659804/659804_poster_l.jpg"
           />
+          <Link to="/posts">FISHY</Link>
         </Header>
         <Header as="h3" textAlign="right">
           {loggedInUser ? <p>Hello there, {loggedInUser.username}</p> : null}

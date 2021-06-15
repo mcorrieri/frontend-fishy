@@ -1,3 +1,4 @@
+import { Card } from "semantic-ui-react";
 import FishCard from "./FishCard";
 
 function MyAquarium({ loggedInUser }) {
@@ -5,7 +6,7 @@ function MyAquarium({ loggedInUser }) {
     return <FishCard key={fish.id} fish={fish} id={fish.id} />;
   });
 
-  return <ul>{fishCards}</ul>;
+  return <Card.Group>{fishCards}</Card.Group>;
 }
 
 export default MyAquarium;
