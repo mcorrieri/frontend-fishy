@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
+import { Form, Button } from "semantic-ui-react";
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -41,25 +42,31 @@ function Login({ onLogin }) {
   return (
     <div className="form-container">
       {errors && <h1>{errors}</h1>}
-      <form className="login-form" onSubmit={logIn}>
-        <label>Username</label>
-        <input
-          name="username"
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label>Password</label>
-        <input
-          name="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <Form className="login-form" onSubmit={logIn}>
+        <Form.Group widths="equal">
+          <Form.Field>
+            <label>Username</label>
+            <input
+              name="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input
+              name="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Field>
+        </Form.Group>
+        <Button type="submit"> Submit</Button>
+      </Form>
       <br></br>
-      <button onClick={handleNewAccount}>Create fishy account</button>
+      <Button onClick={handleNewAccount}>Create Fishy account</Button>
     </div>
   );
 }

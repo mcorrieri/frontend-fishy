@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Card } from "semantic-ui-react";
 import PostCard from "./PostCard";
 
 function PostPage() {
-  // const [user, setUser] = useState("");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,6 @@ function PostPage() {
     })
       .then((res) => res.json())
       .then(function (posts) {
-        // console.log(posts);
         setPosts(posts);
       });
   }, []);
@@ -27,9 +26,8 @@ function PostPage() {
 
   return (
     <div>
-      <h1>Post Page</h1>
       <Link to="/postform">Add New Post</Link>
-      <ul>{postCards}</ul>
+      <Card.Group itemsPerRow={3}>{postCards}</Card.Group>
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router";
-import { Image } from "semantic-ui-react";
+import { Image, Button, Card } from "semantic-ui-react";
 
-function PostInfo(props) {
+function PostInfo(props, { loggedInUser }) {
   console.log(props);
   const [post, setPost] = useState([]);
+  const [aquarium, setAquarium] = useState([]);
   const params = useParams();
   const history = useHistory();
 
@@ -33,35 +34,26 @@ function PostInfo(props) {
       });
   }
 
-  //   function handleUpdatePost() {
-  //     fetch(`http://localhost:3000/posts/${params.id}`, {
-  //       method: "PATCH",
-  //       headers: {
-  //         "Content-type": "application/json",
-  //         // "Authorization": loggedInUser.token
-  //       },
-  //       body: JSON.stringify({
-
-  //       })
-  //     })
-  //       .then((res) => res.json())
-  //       .then((resp) => {
-  //         history.push("/posts");
-  //       });
-  //   }
+  function addToAquarium() {
+    setAquarium([...aquarium, post.id]);
+  }
 
   return (
     <div>
-      <h1>Post info</h1>
-      <Image wrapped size="medium" src={post.image} alt="post-image" />
-      <p>Description: {post.description}</p>
-      <p>Water Type: {post.water_type}</p>
-      <p>Location: {post.location}</p>
-      <p>Date: {post.date} </p>
-      <p>Care level: </p>
+      <Card className="ui centered card">
+        <Image wrapped size="medium" src={post.image} alt="post-image" />
+        <Card.Content>
+          <p>Description: {post.description}</p>
+          <p>Water Type: {post.water_type}</p>
+          <p>Location: {post.location}</p>
+          <p>Date: {post.date} </p>
+        </Card.Content>
+      </Card>
       <div>
-        <button onClick={deletePost}>Delete post</button>
-        <button>Edit post</button>
+        <Button onClick={deletePost}>Delete post</Button>
+        <Button>Edit post</Button>
+        <br></br>
+        <Button onClick={addToAquarium}>I want this fish</Button>
       </div>
     </div>
   );

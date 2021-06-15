@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Form } from "semantic-ui-react";
 
 function PostForm() {
   const [date, setDate] = useState("");
@@ -37,39 +38,51 @@ function PostForm() {
   }
   return (
     <div className="form-container">
-      <form onSubmit={handleAddPost}>
-        <label>Date: </label>
-        <input
-          type="text"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <label>Description: </label>
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <label>Image: </label>
-        <input
-          type="text"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
-        <label>Water type: </label>
-        <input
-          type="text"
-          value={water_type}
-          onChange={(e) => setWatertype(e.target.value)}
-        />
-        <label>Location: </label>
-        <input
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
+      <Form onSubmit={handleAddPost}>
+        <Form.Group widths="equal">
+          <Form.Field>
+            <label>Date: </label>
+            <input
+              type="text"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Description: </label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Image: </label>
+            <input
+              type="text"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Water type: </label>
+            <input
+              type="text"
+              value={water_type}
+              onChange={(e) => setWatertype(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Location: </label>
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+          </Form.Field>
+        </Form.Group>
         <input type="submit" />
-      </form>
+      </Form>
     </div>
   );
 }
