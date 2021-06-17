@@ -1,6 +1,6 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Switch, Route } from "react-router";
 import PostPage from "./Components/PostPage";
 import Login from "./Components/Login";
@@ -21,24 +21,33 @@ function App() {
   function onLogin(userInfo) {
     setLoggedInUser(userInfo);
     setLoggedInUserPosts(userInfo.posts);
-    console.log(userInfo.posts);
+    console.log(userInfo.fish);
   }
   // console.log(loggedInUser);
+
+  const fetchUserPosts = useCallback(() => {
+    fetch("http://localhost:3000/keep_logged_in", {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoggedInUser(data);
+        setLoggedInUserPosts(data.posts);
+      });
+  }, []);
+
   useEffect(() => {
     if (localStorage.token) {
-      fetch("http://localhost:3000/keep_logged_in", {
-        method: "GET",
-        headers: {
-          Authorization: localStorage.token,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setLoggedInUser(data);
-          setLoggedInUserPosts(data.posts);
-        });
+      fetchUserPosts();
+      // fetchUserFish();
     }
-  }, []);
+  }, [
+    fetchUserPosts,
+    //  fetchUserFish
+  ]);
 
   // console.log(loggedInUser);
 
@@ -52,42 +61,48 @@ function App() {
         <Route exact path="/signup">
           <Signup onLogin={onLogin} />
         </Route>
-        <Route exact path="/posts">
-          <PostPage
-            loggedInUserPosts={loggedInUserPosts}
-            setLoggedInUserPosts={setLoggedInUserPosts}
-          />
-        </Route>
-        <Route exact path="/post/:id">
-          <PostInfo loggedInUser={loggedInUser} />
-        </Route>
-        <Route exact path="/postform">
-          <PostForm
-            loggedInUser={loggedInUser}
-            loggedInUserFish={loggedInUserFish}
-            setLoggedInUserFish={setLoggedInUserFish}
-            loggedInUserPosts={loggedInUserPosts}
-            setLoggedInUserPosts={setLoggedInUserPosts}
-          />
-        </Route>
-        <Route exact path="/posts/:id">
-          <EditPostForm
-            loggedInUser={loggedInUser}
-            loggedInUserFish={loggedInUserFish}
-            setLoggedInUserFish={setLoggedInUserFish}
-            loggedInUserPosts={loggedInUserPosts}
-            setLoggedInUserPosts={setLoggedInUserPosts}
-          />
-        </Route>
-        <Route exact path="/myfish">
-          <MyAquarium loggedInUser={loggedInUser} />
-        </Route>
-        <Route exact path="/myposts">
-          <MyPosts
-            loggedInUser={loggedInUser}
-            loggedInUserPosts={loggedInUserPosts}
-          />
-        </Route>
+        {loggedInUser ? (
+          <>
+            <Route exact path="/posts">
+              <PostPage
+                loggedInUserPosts={loggedInUserPosts}
+                setLoggedInUserPosts={setLoggedInUserPosts}
+              />
+            </Route>
+            <Route exact path="/post/:id">
+              <PostInfo loggedInUser={loggedInUser} />
+            </Route>
+            <Route exact path="/postform">
+              <PostForm
+                loggedInUser={loggedInUser}
+                loggedInUserFish={loggedInUserFish}
+                setLoggedInUserFish={setLoggedInUserFish}
+                loggedInUserPosts={loggedInUserPosts}
+                setLoggedInUserPosts={setLoggedInUserPosts}
+              />
+            </Route>
+            <Route exact path="/posts/:id">
+              <EditPostForm
+                loggedInUser={loggedInUser}
+                fetchUserPosts={fetchUserPosts}
+              />
+            </Route>
+            <Route exact path="/myfish">
+              <MyAquarium
+                loggedInUser={loggedInUser}
+                // fetchUserFish={fetchUserFish}
+              />
+            </Route>
+            <Route exact path="/myposts">
+              <MyPosts
+                loggedInUser={loggedInUser}
+                loggedInUserPosts={loggedInUserPosts}
+              />
+            </Route>
+          </>
+        ) : (
+          <Login onLogin={onLogin} />
+        )}
         <Route exact path="/search">
           <Search />
         </Route>

@@ -2,13 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Form } from "semantic-ui-react";
 
-function EditPostForm({
-  loggedInUser,
-  loggedInUserFish,
-  setLoggedInUserFish,
-  loggedInUserPosts,
-  setLoggedInUserPosts,
-}) {
+function EditPostForm({ loggedInUser, fetchUserPosts }) {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
@@ -63,6 +57,7 @@ function EditPostForm({
         return res.json();
       })
       .then((updatedPost) => {
+        fetchUserPosts();
         history.push("/posts");
       });
   }

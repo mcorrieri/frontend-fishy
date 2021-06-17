@@ -24,7 +24,7 @@ function Login({ onLogin }) {
     })
       .then((res) => res.json())
       .then((userInfo) => {
-        console.log(userInfo);
+        console.log("userInfo", userInfo);
         if (userInfo.message) {
           alert(userInfo.message);
         } else {

@@ -35,7 +35,25 @@ function PostInfo({ loggedInUser }) {
   function handleEditPost() {
     history.push(`/posts/${params.id}`);
   }
-  console.log(loggedInUser);
+  console.log(post);
+
+  function assignOwner() {
+    let fishdata = {
+      owner_id: loggedInUser.id,
+    };
+    fetch(`http://localhost:3000/fish/${post.fish_id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: loggedInUser.token,
+      },
+      body: JSON.stringify(fishdata),
+    })
+      .then((res) => res.json())
+      .then((updatedFish) => {
+        history.push("/posts");
+      });
+  }
   return (
     <div>
       <Card className="ui centered card">
@@ -56,7 +74,7 @@ function PostInfo({ loggedInUser }) {
           ) : null}
         </div>
         <br></br>
-        <Button>I want this fish</Button>
+        <Button onClick={assignOwner}>I want this fish</Button>
       </div>
     </div>
   );

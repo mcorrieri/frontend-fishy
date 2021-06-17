@@ -4,7 +4,7 @@ import { Card } from "semantic-ui-react";
 import PostCard from "./PostCard";
 import Search from "./Search";
 
-function PostPage({}) {
+function PostPage() {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
