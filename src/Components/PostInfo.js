@@ -32,9 +32,9 @@ function PostInfo({ loggedInUser }) {
       });
   }
 
-  // function addToAquarium() {
-  //   setAquarium([...aquarium, post.id]);
-  // }
+  function handleEditPost() {
+    history.push(`/posts/${params.id}`);
+  }
   console.log(loggedInUser);
   return (
     <div>
@@ -42,7 +42,6 @@ function PostInfo({ loggedInUser }) {
         <Image wrapped size="medium" src={post.image} alt="post-image" />
         <Card.Content>
           <p>Description: {post.description}</p>
-          <p>Water Type: {post.water_type}</p>
           <p>Location: {post.location}</p>
           <p>Date: {post.date} </p>
         </Card.Content>
@@ -52,7 +51,9 @@ function PostInfo({ loggedInUser }) {
           {loggedInUser.id === post.user_id ? (
             <Button onClick={deletePost}>Delete post</Button>
           ) : null}
-          {loggedInUser.id === post.user_id ? <Button>Edit post</Button> : null}
+          {loggedInUser.id === post.user_id ? (
+            <Button onClick={handleEditPost}>Edit post</Button>
+          ) : null}
         </div>
         <br></br>
         <Button>I want this fish</Button>

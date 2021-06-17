@@ -21,20 +21,18 @@ function PostForm({
 
   const history = useHistory();
 
-  console.log(selectedFish);
-
   useEffect(() => {
     fetch("http://localhost:3000/fish")
       .then((resp) => resp.json())
       .then((fish) => {
         setFish(fish);
-        console.log(fish);
+        // console.log(fish);
         setIsLoaded(true);
       });
   }, []);
 
   if (isLoaded) {
-    console.log(loggedInUser);
+    // console.log(loggedInUser);
     function handleAddPost(e) {
       e.preventDefault();
       const data = {

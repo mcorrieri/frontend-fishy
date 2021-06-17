@@ -10,6 +10,8 @@ import PostInfo from "./Components/PostInfo";
 import MyAquarium from "./Components/MyAquarium";
 import Title from "./Components/Title";
 import MyPosts from "./Components/MyPosts";
+import EditPostForm from "./Components/EditPostForm";
+import Search from "./Components/Search";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -38,7 +40,7 @@ function App() {
     }
   }, []);
 
-  console.log(loggedInUser);
+  // console.log(loggedInUser);
 
   return (
     <div className="App">
@@ -51,13 +53,25 @@ function App() {
           <Signup onLogin={onLogin} />
         </Route>
         <Route exact path="/posts">
-          <PostPage />
+          <PostPage
+            loggedInUserPosts={loggedInUserPosts}
+            setLoggedInUserPosts={setLoggedInUserPosts}
+          />
         </Route>
         <Route exact path="/post/:id">
           <PostInfo loggedInUser={loggedInUser} />
         </Route>
         <Route exact path="/postform">
           <PostForm
+            loggedInUser={loggedInUser}
+            loggedInUserFish={loggedInUserFish}
+            setLoggedInUserFish={setLoggedInUserFish}
+            loggedInUserPosts={loggedInUserPosts}
+            setLoggedInUserPosts={setLoggedInUserPosts}
+          />
+        </Route>
+        <Route exact path="/posts/:id">
+          <EditPostForm
             loggedInUser={loggedInUser}
             loggedInUserFish={loggedInUserFish}
             setLoggedInUserFish={setLoggedInUserFish}
@@ -73,6 +87,9 @@ function App() {
             loggedInUser={loggedInUser}
             loggedInUserPosts={loggedInUserPosts}
           />
+        </Route>
+        <Route exact path="/search">
+          <Search />
         </Route>
       </Switch>
     </div>

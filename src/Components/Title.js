@@ -14,7 +14,7 @@ function Title({ loggedInUser, setLoggedInUser }) {
   return (
     <div className="header">
       <Segment>
-        <Header as="h2" textAlign="left">
+        <Header as="h1">
           <Image
             circular
             src="https://image.posterlounge.com/img/products/660000/659804/659804_poster_l.jpg"
@@ -22,7 +22,9 @@ function Title({ loggedInUser, setLoggedInUser }) {
           <Link to="/posts">FISHY</Link>
         </Header>
         <Header as="h3" textAlign="right">
-          {loggedInUser ? <p>Hello there, {loggedInUser.username}</p> : null}
+          {loggedInUser ? (
+            <p>Keep on fishin, {loggedInUser.username}!</p>
+          ) : null}
           <Link to="/myfish">My Aquarium</Link>
           <br></br>
           <Link to="/myposts">My Posts</Link>
