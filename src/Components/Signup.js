@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import { Form, Button } from "semantic-ui-react";
 
 function Signup() {
   const history = useHistory();
@@ -24,16 +25,20 @@ function Signup() {
 
   return (
     <div className="signup-form">
-      <h2>Create account</h2>
-      <form onSubmit={(e) => signUp(e)}>
-        <label>Username </label>
-        <input name="username" type="text" />
-        <br></br>
-        <label>Password </label>
-        <input name="password" type="password" />
-        <br></br>
-        <input type="submit" />
-      </form>
+      <Form onSubmit={(e) => signUp(e)}>
+        <h2>Create account</h2>
+        <Form.Group widths="equal">
+          <Form.Field>
+            <label>Username </label>
+            <input name="username" type="text" />
+          </Form.Field>
+          <Form.Field>
+            <label>Password </label>
+            <input name="password" type="password" />
+          </Form.Field>
+        </Form.Group>
+        <Button type="submit"> Submit</Button>
+      </Form>
     </div>
   );
 }

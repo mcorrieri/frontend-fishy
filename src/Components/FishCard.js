@@ -2,7 +2,7 @@ import { Card, Image } from "semantic-ui-react";
 
 function FishCard({ fish, id }) {
   return (
-    <Card centered>
+    <Card id="fishcard" centered>
       <Image wrapped size="medium" src={fish.image} alt="fish-image" />
       <Card.Content>
         <p>Breed: {fish.breed}</p>

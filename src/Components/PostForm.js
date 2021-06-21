@@ -8,6 +8,7 @@ function PostForm({
   setLoggedInUserFish,
   loggedInUserPosts,
   setLoggedInUserPosts,
+  // getNewPosts,
 }) {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
@@ -58,6 +59,7 @@ function PostForm({
         })
         .then((newPost) => {
           console.log("hey");
+          // getNewPosts(newPost);
 
           setLoggedInUserPosts([...loggedInUserPosts, newPost]);
           history.push("/posts");

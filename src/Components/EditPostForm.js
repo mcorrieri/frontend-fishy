@@ -21,7 +21,7 @@ function EditPostForm({ loggedInUser, fetchUserPosts }) {
     })
       .then((resp) => resp.json())
       .then((post) => {
-        console.log(post);
+        // console.log(post);
         setDate(post.date);
         setDescription(post.description);
         setImage(post.image);

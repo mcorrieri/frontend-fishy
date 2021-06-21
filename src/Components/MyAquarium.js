@@ -18,7 +18,7 @@ function MyAquarium({ loggedInUser }) {
           setUserFishes(data);
         });
     }
-  }, []);
+  }, [loggedInUser]);
 
   let fishCards = userFishes.map((fish) => {
     return <FishCard key={fish.id} fish={fish} id={fish.id} />;

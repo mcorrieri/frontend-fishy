@@ -21,18 +21,33 @@ function PostPage() {
       });
   }, []);
 
-  let postCards = posts.map((post) => {
+  // useEffect(() => {
+  //   setPosts([...posts, newPost]);
+  // }, [newPost]);
+
+  const displayedPosts = posts.filter((post) => {
+    if (
+      post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.fish.breed.toLowerCase().includes(searchTerm.toLowerCase())
+    ) {
+      return post;
+    }
+  });
+
+  console.log(posts);
+
+  let postCards = displayedPosts.map((post) => {
     return <PostCard key={post.id} post={post} id={post.id} />;
   });
 
-  function handleUpdatedSearch(newSearch) {
-    setSearchTerm(newSearch);
-  }
-
   return (
     <div>
-      <Link to="/postform">Add New Post</Link>
-      <Search searchTerm={searchTerm} onUpdatedSearch={handleUpdatedSearch} />
+      <div className="postpage-links">
+        <Link className="new-post-link" to="/postform">
+          Add New Post
+        </Link>
+        <Search searchTerm={searchTerm} onUpdatedSearch={setSearchTerm} />
+      </div>
       <Card.Group>{postCards}</Card.Group>
     </div>
   );

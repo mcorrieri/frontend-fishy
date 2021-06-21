@@ -5,7 +5,12 @@ function PostCard({ post, id }) {
   const { date, description, image, location, price, comment } = post;
 
   return (
-    <Card className="ui centered card" as={Link} to={`/post/${id}`}>
+    <Card
+      id="post-index-card"
+      className="ui centered card"
+      as={Link}
+      to={`/post/${id}`}
+    >
       <Image wrapped size="medium" src={image} alt="Post" />
       <Card.Content>
         <div>

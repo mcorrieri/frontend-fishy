@@ -35,7 +35,7 @@ function PostInfo({ loggedInUser }) {
   function handleEditPost() {
     history.push(`/posts/${params.id}`);
   }
-  console.log(post);
+  // console.log(post);
 
   function assignOwner() {
     let fishdata = {

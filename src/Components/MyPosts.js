@@ -3,7 +3,7 @@ import UserPosts from "./UserPosts";
 
 function MyPosts({ loggedInUser, loggedInUserPosts }) {
   if (loggedInUser) {
-    console.log(loggedInUserPosts);
+    // console.log(loggedInUserPosts);
     let myCards = loggedInUserPosts.map((post) => {
       return <UserPosts key={post.id} post={post} />;
     });

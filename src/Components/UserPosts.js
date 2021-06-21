@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function UserPosts({ post }) {
   return (
-    <Card centered as={Link} to={`/post/${post.id}`}>
+    <Card id="user-post-cards" centered as={Link} to={`/post/${post.id}`}>
       <Image wrapped size="medium" src={post.image} alt="post-image" />
       <Card.Content>
         <p>{post.description}</p>
