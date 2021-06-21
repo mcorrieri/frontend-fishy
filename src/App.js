@@ -51,15 +51,6 @@ function App() {
 
   // console.log(loggedInUser);
 
-  // SEARCH in App?
-  // const displayedPosts = userInfo.filter((post) => {
-  //   return post.toLowerCase().includes(searchTerm.toLowerCase());
-  // });
-
-  // function getNewPost(newPost) {
-  //   setNewPost(newPost);
-  // }
-
   return (
     <div className="App">
       <Title loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />

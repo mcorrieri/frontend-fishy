@@ -15,20 +15,29 @@ function Title({ loggedInUser, setLoggedInUser }) {
     <div className="header">
       {/* <Segment> */}
       <Header as="h1">
-        <Image
-          circular
+        <img
+          className="logopic"
           src="https://image.posterlounge.com/img/products/660000/659804/659804_poster_l.jpg"
         />
         <Link to="/posts">FISHY</Link>
       </Header>
-      <Header as="h3" textAlign="right">
-        {loggedInUser ? <p>Keep on fishin, {loggedInUser.username}!</p> : null}
-        <br></br>
-        <Link to="/myfish">My Aquarium</Link>
-        <br></br>
-        <Link to="/myposts">My Posts</Link>
-        <br></br>
-        <Button onClick={() => logOut()}>Logout</Button>
+      <Header as="h3">
+        <span className="user-span">
+          {loggedInUser ? (
+            <p>Keep on fishin, {loggedInUser.username}!</p>
+          ) : null}
+        </span>
+        <div className="button-container">
+          <Button id="link" className="user">
+            <Link to="/myposts">My Posts</Link>
+          </Button>
+          <Button id="link" className="user">
+            <Link to="/myfish">My Aquarium</Link>
+          </Button>
+          <Button id="logout" className="logoutbtn" onClick={() => logOut()}>
+            Logout
+          </Button>
+        </div>
       </Header>
       {/* </Segment> */}
     </div>

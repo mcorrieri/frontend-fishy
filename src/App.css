@@ -41,8 +41,11 @@
   background-color: rgb(181, 220, 235);
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
 }
 
 #post-index-card {
@@ -51,12 +54,9 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  /* height: fit-content; */
-  box-shadow: 3px 3px 3px rgba(36, 53, 238, 0.671);
-  border-radius: 30px;
-  /* height: 300px;
-  width: 200px;
-  margin: 30px; */
+  box-shadow: 3px 3px 3px rgba(36, 181, 238, 0.671);
+  font-family: Arial, Helvetica, sans-serif;
+  /* border-radius: 30px; */
 }
 
 .new-post-link {
@@ -64,11 +64,11 @@
 }
 
 #fishcard {
-  background-color: #5ab9ea;
+  background-color: #c1c8e4;
 }
 
 #user-post-cards {
-  background-color: #5ab9ea;
+  background-color: #c1c8e4;
   color: #282c34;
 }
 
@@ -76,4 +76,49 @@
   align-items: center;
   padding-top: 2%;
   padding-bottom: 2%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.card-image {
+  object-fit: cover;
+  height: 300px;
+  width: auto;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  color: #282c34;
+}
+
+.user-span {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-family: sans-serif;
+  margin-right: 10px;
+}
+
+.login-form {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 50px;
+}
+
+#postform {
+  margin-left: 15px;
+  margin-right: 15px;
+  color: black;
+  margin-top: 10px;
+}
+
+.form-container {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+#logout.logoutbtn {
+  color: black;
 }

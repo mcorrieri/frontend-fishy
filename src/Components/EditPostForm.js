@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Form } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 
 function EditPostForm({ loggedInUser, fetchUserPosts }) {
   const [date, setDate] = useState("");
@@ -64,7 +64,7 @@ function EditPostForm({ loggedInUser, fetchUserPosts }) {
 
   return (
     <div className="form-container">
-      <Form onSubmit={handleEditPost}>
+      <Form id="postform" onSubmit={handleEditPost}>
         <Form.Group widths="equal">
           <Form.Field>
             <label>Date: </label>
@@ -115,7 +115,7 @@ function EditPostForm({ loggedInUser, fetchUserPosts }) {
             />
           </Form.Field>
         </Form.Group>
-        <input type="submit" />
+        <Button type="submit">Submit</Button>
       </Form>
     </div>
   );

@@ -25,7 +25,7 @@ function Signup() {
 
   return (
     <div className="signup-form">
-      <Form onSubmit={(e) => signUp(e)}>
+      <Form className="login-form" onSubmit={(e) => signUp(e)}>
         <h2>Create account</h2>
         <Form.Group widths="equal">
           <Form.Field>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Dropdown, Form } from "semantic-ui-react";
+import { Dropdown, Form, Button } from "semantic-ui-react";
 
 function PostForm({
   loggedInUser,
@@ -42,7 +42,7 @@ function PostForm({
         image: image,
         location: location,
         price: price,
-        comment: comment,
+        // comment: comment,
         fish_id: selectedFish,
         user_id: loggedInUser.id,
       };
@@ -75,7 +75,7 @@ function PostForm({
 
     return (
       <div className="form-container">
-        <Form onSubmit={handleAddPost}>
+        <Form id="postform" onSubmit={handleAddPost}>
           <Form.Group widths="equal">
             <Form.Field>
               <label>Date: </label>
@@ -117,14 +117,14 @@ function PostForm({
                 onChange={(e) => setPrice(e.target.value)}
               />
             </Form.Field>
-            <Form.Field>
+            {/* <Form.Field>
               <label>Comment: </label>
               <input
                 type="text"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
               />
-            </Form.Field>
+            </Form.Field> */}
             <Form.Field>
               <label>Fish: </label>
               <Dropdown
@@ -135,7 +135,7 @@ function PostForm({
               />
             </Form.Field>
           </Form.Group>
-          <input type="submit" />
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     );

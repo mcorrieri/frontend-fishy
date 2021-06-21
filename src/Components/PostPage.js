@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card } from "semantic-ui-react";
+import { Card, Button } from "semantic-ui-react";
 import PostCard from "./PostCard";
 import Search from "./Search";
 
@@ -43,9 +43,11 @@ function PostPage() {
   return (
     <div>
       <div className="postpage-links">
-        <Link className="new-post-link" to="/postform">
-          Add New Post
-        </Link>
+        <Button>
+          <Link className="new-post-link" to="/postform">
+            Add New Post
+          </Link>
+        </Button>
         <Search searchTerm={searchTerm} onUpdatedSearch={setSearchTerm} />
       </div>
       <Card.Group>{postCards}</Card.Group>
