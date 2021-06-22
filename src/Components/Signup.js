@@ -24,20 +24,23 @@ function Signup() {
   }
 
   return (
-    <div className="signup-form">
+    <div className="form-container">
       <Form className="login-form" onSubmit={(e) => signUp(e)}>
-        <h2>Create account</h2>
-        <Form.Group widths="equal">
-          <Form.Field>
-            <label>Username </label>
-            <input name="username" type="text" />
-          </Form.Field>
-          <Form.Field>
-            <label>Password </label>
-            <input name="password" type="password" />
-          </Form.Field>
-        </Form.Group>
+        <h2>Create Fishy account</h2>
+        <Form.Field>
+          <label>Username </label>
+          <input name="username" type="text" />
+        </Form.Field>
+        <Form.Field>
+          <label>Password </label>
+          <input name="password" type="password" />
+        </Form.Field>
         <Button type="submit"> Submit</Button>
+        {/* <Message
+          success
+          header="Login Completed"
+          content="You're all logged in!"
+        /> */}
       </Form>
     </div>
   );

@@ -8,7 +8,13 @@ function MyPosts({ loggedInUser, loggedInUserPosts }) {
       return <UserPosts key={post.id} post={post} />;
     });
 
-    return <Card.Group>{myCards}</Card.Group>;
+    return myCards.length ? (
+      <Card.Group>{myCards}</Card.Group>
+    ) : (
+      <div className="nothing-here">
+        <p>You haven't made any posts yet pal!</p>
+      </div>
+    );
   } else {
     return null;
   }

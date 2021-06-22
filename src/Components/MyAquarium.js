@@ -24,7 +24,13 @@ function MyAquarium({ loggedInUser }) {
     return <FishCard key={fish.id} fish={fish} id={fish.id} />;
   });
 
-  return <Card.Group>{fishCards}</Card.Group>;
+  return fishCards.length ? (
+    <Card.Group>{fishCards}</Card.Group>
+  ) : (
+    <div className="nothing-here">
+      <p>Go buy a fish already ya dingus!</p>
+    </div>
+  );
 }
 
 export default MyAquarium;

@@ -71,7 +71,10 @@ function App() {
               />
             </Route>
             <Route exact path="/post/:id">
-              <PostInfo loggedInUser={loggedInUser} />
+              <PostInfo
+                loggedInUser={loggedInUser}
+                fetchUserPosts={fetchUserPosts}
+              />
             </Route>
             <Route exact path="/postform">
               <PostForm

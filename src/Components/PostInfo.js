@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router";
 import { Image, Button, Card } from "semantic-ui-react";
 
-function PostInfo({ loggedInUser }) {
+function PostInfo({ loggedInUser, fetchUserPosts }) {
   const [post, setPost] = useState([]);
   // const [aquarium, setAquarium] = useState([]);
   const params = useParams();
@@ -28,6 +28,7 @@ function PostInfo({ loggedInUser }) {
     })
       .then((res) => res.json())
       .then((resp) => {
+        fetchUserPosts();
         history.push("/posts");
       });
   }
@@ -56,12 +57,15 @@ function PostInfo({ loggedInUser }) {
   }
   return (
     <div>
-      <Card className="ui centered card">
+      <Card id="fishcard" className="ui centered card">
         <Image wrapped size="medium" src={post.image} alt="post-image" />
         <Card.Content>
-          <p>Description: {post.description}</p>
-          <p>Location: {post.location}</p>
-          <p>Date: {post.date} </p>
+          <div className="card-content">
+            <p>Date: {post.date} </p>
+            <p>Description: {post.description}</p>
+            <p>Location: {post.location}</p>
+            <p>Price: ${post.price}</p>
+          </div>
         </Card.Content>
       </Card>
       <div>

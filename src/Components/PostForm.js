@@ -76,48 +76,57 @@ function PostForm({
     return (
       <div className="form-container">
         <Form id="postform" onSubmit={handleAddPost}>
-          <Form.Group widths="equal">
-            <Form.Field>
-              <label>Date: </label>
-              <input
-                type="text"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>Description: </label>
-              <input
-                type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>Image: </label>
-              <input
-                type="text"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>Location: </label>
-              <input
-                type="text"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>Price: </label>
-              <input
-                type="text"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </Form.Field>
-            {/* <Form.Field>
+          <Form.Field>
+            <label>Fish: </label>
+            <Dropdown
+              className="dropdown"
+              placeholder="Fish breed"
+              fluid
+              options={fishOptions}
+              onChange={(e, r) => setSelectedFish(r.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Date: </label>
+            <input
+              type="text"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Description: </label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Image: </label>
+            <input
+              type="text"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Location: </label>
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Price: </label>
+            <input
+              type="text"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </Form.Field>
+          {/* <Form.Field>
               <label>Comment: </label>
               <input
                 type="text"
@@ -125,17 +134,10 @@ function PostForm({
                 onChange={(e) => setComment(e.target.value)}
               />
             </Form.Field> */}
-            <Form.Field>
-              <label>Fish: </label>
-              <Dropdown
-                placeholder="Fish breed"
-                fluid
-                options={fishOptions}
-                onChange={(e, r) => setSelectedFish(r.value)}
-              />
-            </Form.Field>
-          </Form.Group>
-          <Button type="submit">Submit</Button>
+
+          <Button className="submit-button" type="submit">
+            Submit
+          </Button>
         </Form>
       </div>
     );

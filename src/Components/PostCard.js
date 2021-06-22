@@ -19,7 +19,7 @@ function PostCard({ post, id }) {
         className="card-image"
       />
       <Card.Content>
-        <div>
+        <div className="card-content">
           <p>Date: {date} </p>
           <p>Description: {description}</p>
           <p>Location: {location}</p>

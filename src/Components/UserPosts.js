@@ -6,9 +6,11 @@ function UserPosts({ post }) {
     <Card id="user-post-cards" centered as={Link} to={`/post/${post.id}`}>
       <Image wrapped size="medium" src={post.image} alt="post-image" />
       <Card.Content>
-        <p>{post.description}</p>
-        <p>Location: {post.location}</p>
-        <p>Date: {post.date}</p>
+        <div className="card-content">
+          <p>{post.description}</p>
+          <p>Location: {post.location}</p>
+          <p>Date: {post.date}</p>
+        </div>
       </Card.Content>
     </Card>
   );
